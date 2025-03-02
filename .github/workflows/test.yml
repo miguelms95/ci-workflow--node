@@ -1,6 +1,6 @@
 # .github/workflows/deploy-project.yml
 
-name: Deploy Project via SFTP
+name: Node build
 
 on:
   push:
