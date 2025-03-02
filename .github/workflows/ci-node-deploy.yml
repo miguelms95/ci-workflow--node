@@ -18,20 +18,20 @@ on:
         type: string
         default: 'dist/*'
       target_path:
-        required: true
+        required: false
         type: string
       deploy_sftp:
         required: false
         type: boolean
         default: false
       sftp_host:
-        required: true
+        required: false
         type: string
       sftp_user:
-        required: true
+        required: false
         type: string
       sftp_pass:
-        required: true
+        required: false
         type: string
 
 jobs:
