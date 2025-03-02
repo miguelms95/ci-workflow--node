@@ -1,0 +1,66 @@
+# .github/workflows/sftp-deploy.yml
+
+name: Node and SFTP Deployment
+
+on:
+  workflow_call:
+    inputs:
+      node_version:
+        required: false
+        type: string
+        default: '20'
+      build_script:
+        required: false
+        type: string
+        default: 'npm run build'
+      source_path:
+        required: false
+        type: string
+        default: 'dist/*'
+      target_path:
+        required: true
+        type: string
+      deploy_sftp:
+        required: false
+        type: boolean
+        default: false
+      sftp_host:
+        required: true
+        type: string
+      sftp_user:
+        required: true
+        type: string
+      sftp_pass:
+        required: true
+        type: string
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository 👋🏼
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node_version }}
+          registry-url: 'https://registry.npmjs.org/'
+
+      - name: Install dependencies 🔨
+        run: npm ci
+
+      - name: Build package 📦
+        run: ${{ inputs.build_script }}
+
+      - name: Upload to SFTP
+        if: ${{ inputs.deploy_sftp }}
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ inputs.sftp_host }}
+          username: ${{ inputs.sftp_user }}
+          password: ${{ inputs.sftp_pass }}
+          port: 22
+          source: "${{ inputs.source_path }}"
+          target: "${{ inputs.target_path }}"
