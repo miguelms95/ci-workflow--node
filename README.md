@@ -2,6 +2,8 @@
 
 Build and deploy node project to SFTP (optionally).
 
+![](https://github.com/miguelms95/ci-workflow--node/actions/workflows/test.yml/badge.svg)
+
 ## Inputs
 
 The workflow accepts the following inputs:
@@ -27,6 +29,8 @@ The workflow accepts the following inputs:
 ## Usage
 
 To use this workflow template, create a workflow file in your repository that calls this reusable workflow.
+
+Usage in your repo:
 
 ```yml
 name: Node build
@@ -56,5 +60,10 @@ jobs:
     uses: miguelms95/ci-workflow--node/.github/workflows/ci-node-deploy.yml@main
     with:
       node_version: '20'
-      deploy_sftp: false
+      target_path: "my-app"
+      deploy_sftp: true
+    secrets:
+      sftp_host: ${{ secrets.SFTP_HOST }}
+      sftp_user: ${{ secrets.SFTP_USER }}
+      sftp_pass: ${{ secrets.SFTP_PASS }}
 ```
