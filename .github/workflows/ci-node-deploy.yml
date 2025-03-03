@@ -1,6 +1,6 @@
 # .github/workflows/sftp-deploy.yml
 
-name: Node and SFTP Deployment
+name: Node and SFTP Deployment 🚀
 
 on:
   workflow_call:
