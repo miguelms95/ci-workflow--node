@@ -24,15 +24,13 @@ on:
         required: false
         type: boolean
         default: false
+    secrets:
       sftp_host:
         required: false
-        type: string
       sftp_user:
         required: false
-        type: string
       sftp_pass:
         required: false
-        type: string
 
 jobs:
   deploy:
