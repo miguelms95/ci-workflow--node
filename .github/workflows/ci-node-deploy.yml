@@ -56,9 +56,9 @@ jobs:
         if: ${{ inputs.deploy_sftp }}
         uses: appleboy/scp-action@v0.1.7
         with:
-          host: ${{ inputs.sftp_host }}
-          username: ${{ inputs.sftp_user }}
-          password: ${{ inputs.sftp_pass }}
+          host: ${{ secrets.sftp_host }}
+          username: ${{ secrets.sftp_user }}
+          password: ${{ secrets.sftp_pass }}
           port: 22
           source: "${{ inputs.source_path }}"
           target: "${{ inputs.target_path }}"
