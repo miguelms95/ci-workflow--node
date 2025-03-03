@@ -13,6 +13,10 @@ The workflow accepts the following inputs:
 * **`source_path` (Optional, String, Default: `'dist/*'`):** The path to the files to upload to the SFTP server.
 * **`target_path` (Optional, String):** The target directory on the SFTP server.
 * **`deploy_sftp` (Optional, Boolean, Default: `false`):** A flag to enable or disable SFTP deployment.
+
+## Secrets
+The workflow requires the following optional secrets:
+
 * **`sftp_host` (Optional, String):** The SFTP server hostname or IP address.
 * **`sftp_user` (Optional, String):** The SFTP username.
 * **`sftp_pass` (Optional, String):** The SFTP password.
