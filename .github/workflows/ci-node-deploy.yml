@@ -13,6 +13,14 @@ on:
         required: false
         type: string
         default: 'npm run build'
+      test_step:
+        required: false
+        type: boolean
+        default: false
+      test_script:
+        required: false
+        type: string
+        default: 'npm run test'
       source_path:
         required: false
         type: string
@@ -48,6 +56,10 @@ jobs:
 
       - name: Install dependencies 🔨
         run: npm ci
+
+      - name: Test 🧪
+        if: ${{ inputs.test_step }}
+        run: ${{ inputs.test_script }}
 
       - name: Build package 📦
         run: ${{ inputs.build_script }}
