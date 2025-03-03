@@ -33,7 +33,7 @@ on:
         required: false
 
 jobs:
-  deploy:
+  node-ci:
     runs-on: ubuntu-latest
 
     steps:
