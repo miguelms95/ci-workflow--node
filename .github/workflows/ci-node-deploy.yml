@@ -52,7 +52,7 @@ jobs:
       - name: Build package 📦
         run: ${{ inputs.build_script }}
 
-      - name: Upload to SFTP
+      - name: Upload to SFTP 🚀
         if: ${{ inputs.deploy_sftp }}
         uses: appleboy/scp-action@v0.1.7
         with:
