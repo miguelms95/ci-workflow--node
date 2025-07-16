@@ -13,6 +13,10 @@ on:
         required: false
         type: string
         default: 'npm run build'
+      install_step:
+        required: false
+        type: boolean
+        default: true
       test_step:
         required: false
         type: boolean
@@ -55,6 +59,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org/'
 
       - name: Install dependencies 🔨
+        if: ${{ inputs.install_step }}
         run: npm ci
 
       - name: Test 🧪
